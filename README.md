@@ -13,7 +13,7 @@ Guia completo e prático para instalação limpa, remoção de bloatware, otimiz
 Checklist de manutenção preventiva e corretiva para desktops e notebooks. Inclui diagnóstico de problemas comuns, ferramentas essenciais e modelo de relatório pós-atendimento.
 
 ### 📊 [Script de Inventário de Hardware](./inventario-hardware.bat)
-Script `.bat` que coleta automaticamente informações de hardware (CPU, RAM, GPU, disco, rede) e salva um relatório na área de trabalho. Sem necessidade de instalação.
+Script `.bat` e `.ps1` que coleta automaticamente informações de hardware (CPU, RAM, GPU, disco, rede) e salva um relatório na área de trabalho. Sem necessidade de instalação. É necessario apenas os dois arquivos estarem na mesma pasta, e para o Script rodar, executar o arquivo `.bat` como Administrador
 
 ---
 
