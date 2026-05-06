@@ -1,4 +1,4 @@
-# 🖥️ Davi Senise — Portfólio de Suporte TI
+# 🖥️ Davi Senise — Windows Sysadmin Toolkit
 
 > Técnico de Suporte com experiência em infraestrutura, manutenção de hardware, redes e sistemas Windows/Linux.
 
@@ -25,19 +25,7 @@ Script `.bat` e `.ps1` que coleta automaticamente informações de hardware (CPU
 - Redes de computadores
 - Helpdesk e atendimento via chamado
 - Shell Script básico e automação
-
----
-
-## 📜 Certificações
-
-- Computer Skills Intermediário — Workana (96% — Percentil 92)
-- Conceitos de Redes — Cisco Networking (2026)
-- IT Essentials 8 — Cisco Networking (2026)
-- Cliente Windows — Microsoft Learning (2026)
-- Linux Fundamentos — FIAP (2025)
-- Segurança da Informação — Fundação Bradesco (2025)
-- Suporte de TI — Google/Coursera (em andamento)
-
+  
 ---
 
 ## 📬 Contato
