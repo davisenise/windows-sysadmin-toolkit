@@ -44,4 +44,4 @@ Script `.bat` que coleta automaticamente informações de hardware (CPU, RAM, GP
 
 - LinkedIn: [linkedin.com/in/davisenise](https://www.linkedin.com/in/davisenise)
 - E-mail: onedavisc@gmail.com
-- Workana: [workana.com]([https://workana.com](https://www.workana.com/freelancer/b3b67ef67f3d067cc43f41cfed53d496))
+- Workana: [workana.com](https://www.workana.com/freelancer/b3b67ef67f3d067cc43f41cfed53d496)
