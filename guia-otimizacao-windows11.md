@@ -56,7 +56,7 @@ Funciona para Windows 10, 11, Server e Office.
 - Em **notebooks**: Equilibrado
 
 > 💡 Dica: Edite o plano e defina "Estado mínimo do processador: 5%" para economizar energia em standby sem perda de performance.
-
+> Para ativar o desempenho máximo, abra o CMD como adm e processe esse comando: powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
 ---
 
 ## 6️⃣ WinUtil — Otimizações automáticas
