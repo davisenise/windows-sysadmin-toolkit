@@ -8,8 +8,7 @@ Desenvolvido por **Davi Senise — Tecnico de Suporte TI**.
 ## Sobre
 
 Material produzido com base em atendimentos reais de suporte N1/N2.  
-Cada arquivo documenta nao apenas o que fazer, mas o motivo tecnico de cada decisao —  
-para que qualquer tecnico consiga entender, replicar e adaptar ao proprio ambiente.
+Cada arquivo documenta nao apenas o que fazer, mas o motivo tecnico de cada decisao, para que qualquer pessoa consiga entender, replicar e adaptar ao proprio ambiente.
 
 ---
 
