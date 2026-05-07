@@ -17,9 +17,9 @@ para que qualquer tecnico consiga entender, replicar e adaptar ao proprio ambien
 
 | Arquivo | Descricao |
 |---|---|
-| `guia-otimizacao-windows11.md` | Instalacao limpa, remocao de bloatware, otimizacao de performance e configuracao de drivers |
-| `checklist-manutencao-pc.md` | Manutencao preventiva e corretiva para desktops e notebooks com modelo de relatorio pos-atendimento |
-| `inventario-hardware/` | Script `.bat` + `.ps1` que coleta CPU, RAM, GPU, disco e rede e salva relatorio no Desktop |
+| [guia-otimizacao-windows11.md](./guia-otimizacao-windows11.md) | Instalacao limpa, remocao de bloatware, otimizacao de performance e configuracao de drivers |
+| [checklist-manutencao-pc.md](./checklist-manutencao-pc.md) | Manutencao preventiva e corretiva para desktops e notebooks com modelo de relatorio pos-atendimento |
+| [inventario-hardware/](./inventario-hardware/) | Script `.bat` + `.ps1` que coleta CPU, RAM, GPU, disco e rede e salva relatorio no Desktop |
 
 ---
 
