@@ -1,35 +1,56 @@
-# 🖥️ Davi Senise — Windows Sysadmin Toolkit
+# Windows Sysadmin Toolkit
 
-> Técnico de Suporte com experiência em infraestrutura, manutenção de hardware, redes e sistemas Windows/Linux.
-
----
-
-## 📁 Projetos
-
-### 🪟 [Guia de Otimização Windows 11](./guia-otimizacao-windows11.md)
-Guia completo e prático para instalação limpa, remoção de bloatware, otimização de performance e configuração de drivers. Baseado em experiência real de suporte técnico.
-
-### 🔧 [Checklist de Manutenção de PC](./checklist-manutencao-pc.md)
-Checklist de manutenção preventiva e corretiva para desktops e notebooks. Inclui diagnóstico de problemas comuns, ferramentas essenciais e modelo de relatório pós-atendimento.
-
-### 📊 [Script de Inventário de Hardware](./inventario-hardware)
-Script `.bat` e `.ps1` que coleta automaticamente informações de hardware (CPU, RAM, GPU, disco, rede) e salva um relatório na área de trabalho. Sem necessidade de instalação. É necessario apenas os dois arquivos estarem na mesma pasta, e para o Script rodar, executar o arquivo `.bat` como Administrador
+Colecao de guias, checklists e scripts para suporte tecnico e manutencao de ambientes Windows.  
+Desenvolvido por **Davi Senise — Tecnico de Suporte TI**.
 
 ---
 
-## 🛠️ Habilidades
+## Sobre
 
-- Suporte técnico N1/N2
-- Manutenção e montagem de PCs
-- Formatação Windows e Linux (50+ atendimentos)
-- Redes de computadores
-- Helpdesk e atendimento via chamado
-- Shell Script básico e automação
-  
+Material produzido com base em atendimentos reais de suporte N1/N2.  
+Cada arquivo documenta nao apenas o que fazer, mas o motivo tecnico de cada decisao —  
+para que qualquer tecnico consiga entender, replicar e adaptar ao proprio ambiente.
+
 ---
 
-## 📬 Contato
+## Conteudo
 
-- LinkedIn: [linkedin.com/in/davisenise](https://www.linkedin.com/in/davisenise)
-- E-mail: onedavisc@gmail.com
-- Workana: [Davi Senise](https://www.workana.com/freelancer/b3b67ef67f3d067cc43f41cfed53d496)
+| Arquivo | Descricao |
+|---|---|
+| `guia-otimizacao-windows11.md` | Instalacao limpa, remocao de bloatware, otimizacao de performance e configuracao de drivers |
+| `checklist-manutencao-pc.md` | Manutencao preventiva e corretiva para desktops e notebooks com modelo de relatorio pos-atendimento |
+| `inventario-hardware/` | Script `.bat` + `.ps1` que coleta CPU, RAM, GPU, disco e rede e salva relatorio no Desktop |
+
+---
+
+## Como usar
+
+Cada pasta ou arquivo contem instrucoes proprias de uso.  
+Para os scripts, execute sempre o `.bat` como **Administrador**.
+
+---
+
+## Requisitos
+
+- Windows 10 ou 11
+- PowerShell 5.1 ou superior
+- Permissao de Administrador (para os scripts)
+
+---
+
+## Outros repositorios
+
+| Repositorio | Descricao |
+|---|---|
+| [limpeza-windows](https://github.com/davisenise/limpeza-windows) | Automacao de limpeza com relatorio em .txt — temporarios, cache, prefetch e lixeira |
+
+---
+
+## Autor
+
+Davi Senise
+Tecnico de Suporte TI
+LinkedIn · GitHub · Workana
+**Davi Senise**  
+Tecnico de Suporte TI  
+[LinkedIn](https://linkedin.com/in/davisenise) · [GitHub](https://github.com/davisenise) · [Workana](https://www.workana.com/freelancer/davisenise)
