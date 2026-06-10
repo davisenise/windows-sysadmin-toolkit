@@ -52,4 +52,4 @@ Tecnico de Suporte TI
 LinkedIn · GitHub · Workana
 **Davi Senise**  
 Tecnico de Suporte TI  
-[LinkedIn](https://linkedin.com/in/davisenise) · [GitHub](https://github.com/davisenise) · [Workana](https://www.workana.com/freelancer/davisenise)
+[LinkedIn](https://linkedin.com/in/davisenise) · [GitHub](https://github.com/davisenise)
