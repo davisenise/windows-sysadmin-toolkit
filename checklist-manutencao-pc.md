@@ -1,121 +1,118 @@
-# 🔧 Checklist de Manutenção de PC
+# Checklist de manutenção de PC
 
-> Guia prático para manutenção preventiva e corretiva de computadores.  
-> Autor: Davi Senise | Técnico de Suporte TI
+Guia prático de manutenção preventiva e corretiva. Pensado pra ser seguido na ordem, marcando o que já foi feito.
+
+Autor: Davi Senise — Técnico de Suporte TI
 
 ---
 
-## 🛠️ Manutenção Preventiva (Mensal)
+## Manutenção preventiva (mensal)
 
-### Sistema Operacional
-- [ ] Verificar e instalar atualizações do Windows
+### Sistema operacional
+- [ ] Instalar atualizações do Windows
 - [ ] Checar atualizações opcionais (drivers via Windows Update)
-- [ ] Limpar arquivos temporários (`%temp%` e `temp` no Executar)
-- [ ] Esvaziar lixeira
-- [ ] Verificar espaço em disco (mínimo 15% livre)
+- [ ] Limpar arquivos temporários (`%temp%` no Executar)
+- [ ] Esvaziar a lixeira
+- [ ] Verificar espaço em disco (mínimo ~15% livre)
 
 ### Segurança
 - [ ] Atualizar definições do antivírus
-- [ ] Realizar varredura completa de vírus e malwares
-- [ ] Verificar programas desconhecidos instalados
-- [ ] Checar programas na inicialização (Gerenciador de Tarefas → Inicializar)
+- [ ] Rodar varredura completa
+- [ ] Revisar programas instalados desconhecidos
+- [ ] Revisar programas na inicialização
 
 ### Performance
-- [ ] Verificar uso de CPU e RAM em idle (deve ser abaixo de 20%)
-- [ ] Checar temperatura da CPU e GPU (ideal: abaixo de 70°C em carga)
-- [ ] Desfragmentar HDD (não aplicar em SSDs)
-- [ ] Verificar integridade do disco:
-```cmd
-chkdsk C: /f /r
-```
+- [ ] Verificar uso de CPU e RAM em repouso
+- [ ] Checar temperatura de CPU e GPU (ideal abaixo de ~70°C em carga)
+- [ ] Verificar saúde do disco (CrystalDiskInfo)
+- [ ] Desfragmentar **apenas HDD** — nunca SSD
 
 ---
 
-## 🧹 Manutenção Física (A cada 3-6 meses)
+## Manutenção física (a cada 3–6 meses)
 
-- [ ] Desligar e desconectar o PC da tomada
+- [ ] Desligar e tirar o PC da tomada
 - [ ] Abrir o gabinete
 - [ ] Limpar com ar comprimido: coolers, dissipadores, slots de RAM, GPU
-- [ ] Limpar filtros de poeira do gabinete
-- [ ] Verificar cabos soltos ou danificados
-- [ ] Verificar pasta térmica (reaplicar se CPU passar de 85°C em carga)
-- [ ] Fechar gabinete e testar
+- [ ] Limpar filtros de poeira
+- [ ] Conferir cabos soltos ou danificados
+- [ ] Avaliar pasta térmica (reaplicar se CPU passar de ~85°C em carga)
+- [ ] Fechar e testar
 
 ---
 
-## ⚠️ Diagnóstico de Problemas Comuns
+## Diagnóstico de problemas comuns
 
 ### PC lento
-- [ ] Verificar uso de CPU/RAM/Disco no Gerenciador de Tarefas
-- [ ] Checar se há vírus ou malware
+- [ ] Ver uso de CPU/RAM/Disco no Gerenciador de Tarefas
+- [ ] Checar vírus/malware
 - [ ] Verificar temperatura (superaquecimento causa throttling)
-- [ ] Checar saúde do HD/SSD com CrystalDiskInfo
+- [ ] Checar saúde do disco (CrystalDiskInfo)
 - [ ] Limpar inicialização
 
 ### PC não liga
-- [ ] Verificar cabo de energia e tomada
+- [ ] Testar cabo de energia e tomada
 - [ ] Testar com outro cabo/fonte
-- [ ] Verificar se a fonte está ligada (botão atrás)
-- [ ] Retirar e recolocar os pentes de RAM
+- [ ] Conferir o botão da fonte (atrás)
+- [ ] Reassentar os pentes de RAM
 - [ ] Verificar LED de diagnóstico da placa-mãe (se houver)
 
 ### Tela azul (BSOD)
 - [ ] Anotar o código de erro
 - [ ] Verificar atualizações pendentes
 - [ ] Atualizar ou reverter drivers recentes
-- [ ] Rodar `sfc /scannow` no CMD como administrador
-- [ ] Testar RAM com Windows Memory Diagnostic
+- [ ] Rodar `sfc /scannow` (CMD como Admin)
+- [ ] Testar RAM com o Diagnóstico de Memória do Windows
 
 ### Internet lenta / sem conexão
 - [ ] Reiniciar roteador e modem
-- [ ] Verificar cabo de rede ou sinal Wi-Fi
-- [ ] `ipconfig /release` e `ipconfig /renew` no CMD
+- [ ] Conferir cabo de rede ou sinal Wi-Fi
+- [ ] `ipconfig /release` e `ipconfig /renew`
 - [ ] `netsh winsock reset` e reiniciar
-- [ ] Atualizar driver de placa de rede
+- [ ] Atualizar driver da placa de rede
 
 ---
 
-## 🔨 Ferramentas Essenciais
+## Ferramentas essenciais
 
-| Ferramenta | Uso | Link |
-|---|---|---|
-| CrystalDiskInfo | Saúde do HD/SSD | https://crystalmark.info |
-| HWMonitor | Temperaturas e tensões | https://www.cpuid.com/softwares/hwmonitor.html |
-| Malwarebytes | Remoção de malware | https://www.malwarebytes.com |
-| Autoruns | Gerenciar inicialização | https://learn.microsoft.com/sysinternals/downloads/autoruns |
-| DDU | Desinstalar drivers GPU | https://www.wagnardsoft.com |
-| Rufus | Criar pendrive bootável | https://rufus.ie |
+| Ferramenta | Uso |
+|---|---|
+| CrystalDiskInfo | Saúde do HD/SSD |
+| HWMonitor | Temperaturas e tensões |
+| Malwarebytes | Remoção de malware |
+| Autoruns (Sysinternals) | Gerenciar inicialização |
+| DDU | Remover drivers de GPU |
+| Rufus | Criar pendrive bootável |
 
 ---
 
-## 💻 Comandos úteis (CMD / PowerShell como Admin)
+## Comandos úteis (CMD / PowerShell como Admin)
 
 ```cmd
-# Verificar integridade dos arquivos do sistema
+:: Verificar integridade dos arquivos do sistema
 sfc /scannow
 
-# Reparar imagem do Windows
+:: Reparar a imagem do Windows
 DISM /Online /Cleanup-Image /RestoreHealth
 
-# Verificar disco
+:: Verificar disco (roda no próximo boot na unidade do sistema)
 chkdsk C: /f /r
 
-# Resetar configurações de rede
+:: Resetar rede
 netsh winsock reset
 ipconfig /flushdns
-
-# Ver temperatura via PowerShell
-Get-WmiObject MSAcpi_ThermalZoneTemperature -Namespace "root/wmi"
 ```
+
+> `chkdsk C: /f /r` na unidade do sistema não roda na hora — ele agenda pro próximo boot. Avise o usuário, porque pode demorar.
 
 ---
 
-## 📋 Relatório pós-manutenção (modelo)
+## Modelo de relatório pós-atendimento
 
 ```
 Data: ___/___/______
 Técnico: Davi Senise
-Cliente/Equipamento: _______________
+Cliente / Equipamento: _______________
 
 Serviços realizados:
 [ ] Limpeza física
@@ -128,9 +125,9 @@ Serviços realizados:
 Observações:
 _______________________________________________
 
-Status: ✅ Resolvido | ⚠️ Requer acompanhamento | ❌ Pendente
+Status:  Resolvido  |  Requer acompanhamento  |  Pendente
 ```
 
 ---
 
-*Checklist baseado em experiência prática com mais de 50 atendimentos realizados.*
+*Checklist baseado em experiência prática de atendimento.*
