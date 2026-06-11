@@ -1,230 +1,140 @@
-# 🪟 Guia Definitivo de Otimização — Windows 11
+# Guia de otimização — Windows 10/11
 
-> Guia prático baseado em experiência real de suporte técnico. Aplicável também ao Windows 10.
-> Autor: Davi Senise | Técnico de Suporte TI
+Guia prático de otimização baseado em atendimento real de suporte. Foco em deixar a máquina estável, limpa e rápida, sem gambiarra e sem nada que comprometa o sistema.
 
----
+Autor: Davi Senise — Técnico de Suporte TI
 
-## 1️⃣ Instalação limpa do sistema (Opcional)
-
-Instale o Windows 11 do zero sempre que possível para evitar resíduos de instalações anteriores.
+> Ordem importa: faça de cima pra baixo. Cada etapa assume que a anterior foi feita.
 
 ---
 
-## 2️⃣ Atualizações do Windows
+## 1. Atualizações do Windows
 
-Rode as atualizações normais e também as **Atualizações Opcionais**, que contêm drivers importantes:
+Sistema desatualizado é a causa raiz de uma porção de problema que parece "do nada".
 
-```
-Windows Update → Opções Avançadas → Atualizações Opcionais
-```
+- Vá em `Configurações → Windows Update` e instale tudo.
+- Entre em `Opções avançadas → Atualizações opcionais` — é onde ficam drivers importantes que o Windows não instala sozinho.
+- Reinicie e rode de novo até não sobrar atualização pendente.
 
 ---
 
-## 3️⃣ Drivers críticos
+## 2. Drivers
 
-Os dois mais importantes são **Placa de Vídeo** e **Chipset**.
+Os que mais impactam estabilidade e performance são **placa de vídeo** e **chipset**. Baixe sempre do site do fabricante, nunca de site aleatório.
 
-| Fabricante | Link |
+| Componente | Onde baixar |
 |---|---|
-| AMD (GPU + Chipset) | https://www.amd.com/es/support |
-| NVIDIA | https://la.nvidia.com/Download/index.aspx |
-| Intel Chipset | https://www.intel.com/content/www/us/en/download/19347 |
+| GPU NVIDIA | nvidia.com (seção Drivers) |
+| GPU/Chipset AMD | amd.com (seção Support) |
+| Chipset Intel | intel.com (Download Center) |
 
-> ⚠️ Evite instalar drivers de periféricos (mouse, teclado) a menos que seja estritamente necessário.
+> Driver de mouse e teclado: só instale se o periférico tiver função específica (macro, RGB). Pro uso comum, o driver genérico do Windows resolve.
 
 ---
 
-## 4️⃣ Ativação do Windows
+## 3. Plano de energia
 
-Via PowerShell como Administrador:
+`Painel de Controle → Opções de Energia`
+
+- **Desktop**: Alto Desempenho.
+- **Notebook**: Equilibrado (Alto Desempenho derruba a bateria rápido e esquenta).
+
+No plano escolhido, em `Alterar configurações do plano → Alterar configurações avançadas`, vale checar:
+- Disco rígido: desligar após "Nunca" (evita travadinha ao acordar o disco).
+- Suspensão seletiva USB: desativada se algum periférico desconecta sozinho.
+
+---
+
+## 4. Remoção de bloatware
+
+App pré-instalado que o usuário nunca abre consome espaço e às vezes roda em segundo plano. Dá pra remover com PowerShell **como Administrador**.
+
+> Antes de sair removendo: confirme com o usuário/empresa o que realmente não é usado. Em ambiente corporativo, alguns desses apps fazem parte do fluxo de trabalho.
 
 ```powershell
-irm https://get.activated.win | iex
+# Exemplo — remove apps de consumo comuns
+$apps = @(
+    'Microsoft.BingWeather',
+    'Microsoft.BingNews',
+    'Microsoft.WindowsFeedbackHub',
+    'Microsoft.MicrosoftSolitaireCollection',
+    'Microsoft.WindowsAlarms'
+)
+
+foreach ($app in $apps) {
+    Get-AppxPackage -AllUsers $app | Remove-AppxPackage -ErrorAction SilentlyContinue
+}
 ```
 
-Projeto: https://github.com/massgravel/Microsoft-Activation-Scripts  
-Funciona para Windows 10, 11, Server e Office.
+Pra ver tudo que está instalado antes de decidir:
+
+```powershell
+Get-AppxPackage -AllUsers | Select-Object Name | Sort-Object Name
+```
+
+> Não recomendo remover OneDrive, Store ou componentes do sistema — costuma dar dor de cabeça depois e o ganho é mínimo.
 
 ---
 
-## 5️⃣ Opções de Energia
+## 5. Programas na inicialização
 
-`Painel de Controle → Opções de Energia → Alto Desempenho`
+Metade da lentidão "no boot" é programa abrindo junto com o Windows sem necessidade.
 
-- Em **desktops**: Alto Desempenho ou Desempenho Máximo
-- Em **notebooks**: Equilibrado
+`Gerenciador de Tarefas → aba Inicializar` → desative o que não precisa subir com o sistema. Mantenha:
+- Antivírus
+- Apps que o usuário realmente usa logo de cara
 
-> 💡 Dica: Edite o plano e defina "Estado mínimo do processador: 5%" para economizar energia em standby sem perda de performance.
+Pra inicialização mais detalhada (serviços, tarefas agendadas), o **Autoruns** (Sysinternals, da própria Microsoft) mostra tudo: learn.microsoft.com/sysinternals/downloads/autoruns
 
-> Para ativar o desempenho máximo, abra o cmd como administrador e processe esse comando: powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61. Irá habilitar a opção no plano de energia
 ---
 
-## 6️⃣ WinUtil — Otimizações automáticas
+## 6. Ferramentas de otimização
 
-Ferramenta do Chris Titus Tech. Execute via PowerShell como Administrador:
+O **WinUtil** (open-source, do Chris Titus) automatiza vários ajustes de telemetria, serviços e limpeza numa interface só.
 
 ```powershell
 irm "https://christitus.com/win" | iex
 ```
 
-**Na aba Tweaks — Essential Tweaks (marcar):**
-- [x] Activity History - Disable
-- [x] ConsumerFeatures - Disable
-- [x] Disk Cleanup - Run
-- [x] End Task With Right Click - Enable
-- [x] PowerShell 7 Telemetry - Disable
-- [x] Restore Point - Create
-- [x] Services - Set to Manual
-- [x] Telemetry - Disable
-- [x] Temporary Files - Remove
+> Ressalva profissional: rodar script remoto direto via `iex` baixa e executa código da internet na hora. Em máquina pessoal, ok. Em ambiente corporativo, **não** rode script remoto sem revisar antes — leia o que a ferramenta faz e confirme se a política da empresa permite. Esse cuidado é o que separa técnico de quem só copia comando.
 
-**Advanced Tweaks — CAUTION (marcar):**
-- [x] Background Apps - Disable
-- [x] File Explorer Gallery - Disable
-- [x] File Explorer Home - Disable
-- [x] Microsoft Edge - Debloat
-- [x] Notification Tray & Calendar - Disable
-- [x] Teredo - Disable
-- [x] Unwanted Pre-Installed Apps - Remove
-- [x] Visual Effects - Set to Best Performance
-
-> ⚠️ Não marcar: IPv6 - Disable, Microsoft Edge - Remove, Microsoft OneDrive - Remove (pode precisar depois), Xbox & Gaming Components (se usar jogos)
-
-Clique em **Run Tweaks** → Reinicie.
-
-Após reiniciar, abra novamente e clique em **Run OO Shutup 10** → aplique as configurações → Reinicie.
+Ajustes seguros que valem marcar: desativar telemetria, criar ponto de restauração antes, limpar arquivos temporários, ajustar efeitos visuais pra performance.
 
 ---
 
-## 7️⃣ Remoção de bloatware
+## 7. Antivírus
 
-Execute no PowerShell como Administrador:
+O **Windows Defender** moderno é competente pra maioria dos casos — mantenha ele ativo e atualizado em vez de trocar por terceiros sem motivo. Antivírus extra só faz sentido quando há exigência específica da empresa ou um cenário que justifique.
 
-```powershell
-# Bloatware principal
-Get-AppxPackage -AllUsers MicrosoftCorporationII.QuickAssist | Remove-AppxPackage
-Get-AppxPackage -AllUsers Microsoft.WindowsFeedbackHub | Remove-AppxPackage
-Get-AppxPackage -AllUsers Microsoft.Copilot | Remove-AppxPackage
-Get-AppxPackage -AllUsers Microsoft.BingWeather | Remove-AppxPackage
-Get-AppxPackage -AllUsers Microsoft.MicrosoftOfficeHub | Remove-AppxPackage
-Get-AppxPackage -AllUsers Microsoft.BingSearch | Remove-AppxPackage
-Get-AppxPackage -AllUsers Clipchamp.Clipchamp | Remove-AppxPackage
-Get-AppxPackage -AllUsers MSTeams | Remove-AppxPackage
-Get-AppxPackage -AllUsers Microsoft.Todos | Remove-AppxPackage
-Get-AppxPackage -AllUsers Microsoft.MicrosoftStickyNotes | Remove-AppxPackage
-Get-AppxPackage -AllUsers Microsoft.BingNews | Remove-AppxPackage
-Get-AppxPackage -AllUsers Microsoft.OutlookForWindows | Remove-AppxPackage
-Get-AppxPackage -AllUsers Microsoft.WindowsAlarms | Remove-AppxPackage
-Get-AppxPackage -AllUsers Microsoft.MicrosoftSolitaireCollection | Remove-AppxPackage
-
-# Opcionais
-Get-AppxPackage -AllUsers Microsoft.WindowsCamera | Remove-AppxPackage
-Get-AppxPackage -AllUsers Microsoft.WindowsSoundRecorder | Remove-AppxPackage
-Get-AppxPackage -AllUsers Microsoft.ScreenSketch | Remove-AppxPackage
-Get-AppxPackage -AllUsers Microsoft.OneDriveSync | Remove-AppxPackage
-Start-Process -FilePath "$env:SystemRoot\System32\OneDriveSetup.exe" -ArgumentList "/uninstall" -NoNewWindow -Wait
-
-# Xbox (se não usar)
-Get-AppxPackage -AllUsers Microsoft.Xbox.TCUI | Remove-AppxPackage
-Get-AppxPackage -AllUsers Microsoft.GamingApp | Remove-AppxPackage
-```
+Mantenha:
+- Proteção em tempo real ligada
+- Definições atualizadas (vem junto do Windows Update)
+- Uma varredura completa de tempos em tempos
 
 ---
 
-## 8️⃣ Otimizações NVIDIA (se aplicável)
+## Resultado esperado
 
-No Painel de Controle NVIDIA:
-- **Cache do Shader**: 10 GB
-- **Otimização Encadeada (Threaded Optimization)**: Desativado
-
-Desative o **Modo Jogo** do Windows:
-```
-Barra de tarefas → pesquise "Modo Jogo" → Desativar
-```
+Depois de seguir o guia:
+- Boot mais rápido (inicialização limpa)
+- Menos consumo de RAM/CPU em segundo plano
+- Sem bloatware sobrando
+- Sistema atualizado e com drivers certos
 
 ---
 
-## 9️⃣ Otimização de Frametime (RTSS)
+## Checklist rápido
 
-Baixe o **RivaTuner Statistics Server**:  
-https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html
-
-- Desative V-Sync, Double/Triple Buffer no jogo
-- Limite FPS pelo RTSS: **taxa do monitor - 3**  
-  Exemplos: Monitor 144Hz → 141 FPS | Monitor 240Hz → 237 FPS
-- RTSS deve iniciar com o sistema
-
-> 💡 Para NVIDIA: ative NVIDIA REFLEX no menu do jogo (apenas "Ativado", nunca "Ativado+Boost")
-
----
-
-## 🔟 Otimização de HPET
-
-PowerShell como Administrador:
-
-```powershell
-bcdedit /set useplatformtick yes
-bcdedit /set disabledynamictick yes
-bcdedit /deletevalue useplatformclock
-```
-
-> ⚠️ Se o último comando der erro, ignore — é preventivo.
-
-Reinicie e baixe o **ISLC (Timertool)**:  
-https://www.wagnardsoft.com/forums/viewtopic.php?t=1256
-
-Configurações:
-- Marque os 4 checks
-- "Free memory is lower than": RAM total arredondada (ex: 32000 MB para 32 GB)
-- "ISLC polling rate": polling rate do seu mouse (geralmente 1000 Hz)
-
----
-
-## 1️⃣1️⃣ Antivírus
-
-Substitua o Windows Defender pelo **Panda Free Antivirus**:  
-https://www.pandasecurity.com/es/homeusers/free-antivirus/
-
-> Isso desativa automaticamente o Defender. Tentar desativar o Defender manualmente não funciona permanentemente.
-
----
-
-## 1️⃣2️⃣ Programas na inicialização
-
-Abra o Gerenciador de Tarefas → aba **Inicializar** → desative tudo, exceto:
-- Antivírus
-- ISLC (Timertool)
-- Aplicativos essenciais (ex: Discord)
-
----
-
-## ✅ Resultado esperado
-
-Após seguir todos os passos:
-- Sistema mais leve e responsivo
-- Menor input lag
-- Frametime estável
-- Sem bloatware
-
----
-
-## 📋 Checklist rápido
-
-- [ ] Instalação limpa
-- [ ] Windows Update + Atualizações Opcionais
-- [ ] Drivers GPU e Chipset
-- [ ] Windows ativado
-- [ ] Plano de energia: Alto Desempenho
-- [ ] WinUtil executado
-- [ ] Bloatware removido
-- [ ] NVIDIA configurada (se aplicável)
-- [ ] Modo Jogo desativado
-- [ ] RTSS instalado e configurado
-- [ ] HPET otimizado
-- [ ] Antivírus instalado
+- [ ] Windows Update + atualizações opcionais
+- [ ] Drivers de GPU e chipset
+- [ ] Plano de energia ajustado
+- [ ] Bloatware removido (com o aval do usuário)
 - [ ] Inicialização limpa
+- [ ] Telemetria/temporários tratados (WinUtil)
+- [ ] Defender ativo e atualizado
 
 ---
 
-*Guia baseado em experiência prática de suporte técnico. Testado em múltiplos ambientes corporativos e domésticos.*
+> Tweaks específicos de gaming (HPET, limitador de FPS, frametime, timer de mouse) saíram deste guia de propósito: mexem em configuração de boot e são de nicho. Se você quiser, dá pra montar um repo separado só pra otimização de PC gamer — assim este guia continua sendo referência limpa pra suporte corporativo.
+
+*Guia baseado em experiência prática de suporte técnico, testado em ambientes corporativos e domésticos.*
