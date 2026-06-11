@@ -1,55 +1,50 @@
-# Windows Sysadmin Toolkit
+# windows-sysadmin-toolkit
 
-Colecao de guias, checklists e scripts para suporte tecnico e manutencao de ambientes Windows.  
-Desenvolvido por **Davi Senise — Tecnico de Suporte TI**.
+Coleção de guias, checklists e scripts pra suporte técnico e manutenção de ambientes Windows.
 
----
-
-## Sobre
-
-Material produzido com base em atendimentos reais de suporte N1/N2.  
-Cada arquivo documenta nao apenas o que fazer, mas o motivo tecnico de cada decisao, para que qualquer pessoa consiga entender, replicar e adaptar ao proprio ambiente.
+Tudo aqui saiu de atendimento real de suporte N1/N2 — não é teoria de curso. Cada arquivo documenta o que fazer e, principalmente, **por que** fazer, pra qualquer um conseguir entender, repetir e adaptar no próprio ambiente.
 
 ---
 
-## Conteudo
+## conteúdo
 
-| Arquivo | Descricao |
+| Arquivo | O que é |
 |---|---|
-| [guia-otimizacao-windows11.md](./guia-otimizacao-windows11.md) | Instalacao limpa, remocao de bloatware, otimizacao de performance e configuracao de drivers |
-| [checklist-manutencao-pc.md](./checklist-manutencao-pc.md) | Manutencao preventiva e corretiva para desktops e notebooks com modelo de relatorio pos-atendimento |
-| [inventario-hardware/](./inventario-hardware/) | Script `.bat` + `.ps1` que coleta CPU, RAM, GPU, disco e rede e salva relatorio no Desktop |
+| [guia-otimizacao-windows.md](./guia-otimizacao-windows.md) | Otimização de Windows 10/11: atualização, drivers, energia, remoção de bloatware e inicialização |
+| [checklist-manutencao-pc.md](./checklist-manutencao-pc.md) | Manutenção preventiva e corretiva, diagnóstico de problemas comuns e modelo de relatório de atendimento |
+| [inventario-hardware.ps1](./inventario-hardware.ps1) | Script PowerShell que coleta CPU, RAM, placa-mãe, GPU, discos e rede e salva relatório no Desktop |
+| [inventario-hardware.bat](./inventario-hardware.bat) | Atalho que roda o script de inventário como Administrador |
 
 ---
 
-## Como usar
+## como usar
 
-Cada pasta ou arquivo contem instrucoes proprias de uso.  
-Para os scripts, execute sempre o `.bat` como **Administrador**.
+Os guias e checklists são `.md`, é só ler aqui no GitHub.
+
+Pro inventário, baixa os dois arquivos (`.ps1` e `.bat`) na mesma pasta e roda o `.bat` como **Administrador**. Ele chama o PowerShell e gera um `.txt` no Desktop.
+
+> Se o PowerShell reclamar de permissão de execução, o `.bat` já passa `-ExecutionPolicy Bypass` só pra aquela execução — não mexe na política da máquina.
 
 ---
 
-## Requisitos
+## requisitos
 
 - Windows 10 ou 11
 - PowerShell 5.1 ou superior
-- Permissao de Administrador (para os scripts)
+- Permissão de Administrador (pros scripts)
 
 ---
 
-## Outros repositorios
+## outros repositórios
 
-| Repositorio | Descricao |
+| Repositório | O que é |
 |---|---|
-| [limpeza-windows](https://github.com/davisenise/limpeza-windows) | Automacao de limpeza com relatorio em .txt — temporarios, cache, prefetch e lixeira |
+| [inventario-ti](https://github.com/davisenise/inventario-ti) | Inventário de máquinas em rede com export pra Excel |
+| [limpeza-windows](https://github.com/davisenise/limpeza-windows) | Limpeza automática de temporários, cache, prefetch e lixeira com relatório |
 
 ---
 
-## Autor
+## autor
 
-Davi Senise
-Tecnico de Suporte TI
-LinkedIn · GitHub · Workana
-**Davi Senise**  
-Tecnico de Suporte TI  
+**Davi Senise** — Técnico de Suporte TI
 [LinkedIn](https://linkedin.com/in/davisenise) · [GitHub](https://github.com/davisenise)
